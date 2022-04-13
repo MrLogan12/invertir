@@ -56,9 +56,10 @@ public class MainActivity extends AppCompatActivity{
         // esta en una posicion del arrray partiendo de  0
         //decvolver un caracter de una posicion como si fuera un array
         //metodo charART indice
-        for(int i = this.word.length()-1;  i >=0 ; i--) {
-            invertido += invertido + this.word.charAt(i);
+        for(int i = this.word.length() -1;  i >= 0 ; i--) {
+            invertido +=  this.word.charAt(i);
         }
+
         TBresult.setText(invertido);
     }
 }
