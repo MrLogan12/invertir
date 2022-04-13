@@ -48,8 +48,18 @@ public class MainActivity extends AppCompatActivity{
     }
     private void investWord() {
         // Usando StringBuilder con Java sin usar codigo de Android
-        word = new StringBuilder(word).reverse().toString();
-        TBresult.setText(word);
+       // word = new StringBuilder(word).reverse().toString();//
+
+        String invertido="adios";
+
+        ///la idea es que traten la cadena string como si fuera un array donde cada letra
+        // esta en una posicion del arrray partiendo de  0
+        //decvolver un caracter de una posicion como si fuera un array
+        //metodo charART indice
+        for(int i = this.word.length()-1;  i >=0 ; i--) {
+            invertido += invertido + this.word.charAt(i);
+        }
+        TBresult.setText(invertido);
     }
 }
 //COMIT, PUSH cambia mis archivos,UPDATE actualizar y bajar todo de la nube
