@@ -6,5 +6,5 @@ su objetivo es invertir un texto
 
 # librerias
 
-## firebase
-## Android
+- firebase
+- Android
