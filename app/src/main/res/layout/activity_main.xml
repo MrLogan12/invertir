@@ -7,29 +7,28 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/TBresult"
+        android:id="@+id/txtResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        app:layout_constraintEnd_toEndOf="@+id/TXword"
-        app:layout_constraintStart_toStartOf="@+id/TXword"
-        app:layout_constraintTop_toBottomOf="@+id/TXword" />
+        android:layout_marginTop="180dp"
+        app:layout_constraintEnd_toEndOf="@+id/etPalabra"
+        app:layout_constraintStart_toStartOf="@+id/etPalabra"
+        app:layout_constraintTop_toBottomOf="@+id/etPalabra" />
 
     <Button
-        android:id="@+id/BTNexecute"
+        android:id="@+id/btnMensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="148dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/TBresult"
-        app:layout_constraintHorizontal_bias="0.287"
-        app:layout_constraintStart_toStartOf="@+id/TBresult"
-        app:layout_constraintTop_toBottomOf="@+id/TBresult"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/txtResultado"
+        app:layout_constraintTop_toBottomOf="@+id/txtResultado"
+        app:layout_constraintVertical_bias="0.005" />
 
     <EditText
-        android:id="@+id/TXword"
+        android:id="@+id/etPalabra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
@@ -41,4 +40,15 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnProcesar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/orange"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="@+id/txtResultado"
+        app:layout_constraintTop_toBottomOf="@+id/txtResultado" />
 </androidx.constraintlayout.widget.ConstraintLayout>

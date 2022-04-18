@@ -1,66 +1,79 @@
 package com.example.invertir;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+public class MainActivity extends AppCompatActivity {
 
-import com.example.invertir.R;
-
-public class MainActivity extends AppCompatActivity{
-    private TextView TBresult;
-    private EditText TXword;
-    private Button BTNexecute;
-    private String word;
-
-    private void initViews() {
-        TBresult = findViewById(R.id.TBresult);
-        TXword = findViewById(R.id.TXword);
-        BTNexecute = findViewById(R.id.BTNexecute);
-    }
+    //atributos-variables
+    private TextView txtResultado;
+    private EditText etPalabra;
+    private Button btnProcesar;
+    private Button btnMensaje;
+    private String palabra;
+    //metodos - funciones
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initViews();
-        /* Para el evento .setOnClickListener() podemos enviar un metodo o funcion (funcion Anonima)
-        llamando a la interfaz .OnClickListener() que ejecute el procedimiento solo para el boton
-        que llame al .setOnClickListener()
-                Nombre_del_Boton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
-        En funcion LAMBDA
-                Nombre_del_Boton.setOnClickListener(view -> {
-                });
+        inicializarVistas();
+        /*
+        al configurar un boton para decirle que este pendiente al evento clicj de ese boton en pantalla
+        con el uso del metodo .setOnClickListener()
+        Lo que ese mètodo esta esperando como parametro o argunmento es una funcion que serà
+        la funciòn click que activara las funciones a realizar cuando se presione el boton.
+        CuANDO SE PASA UNA FUNCION COMO PARAMENTRO ESTAS GENERALMENTE SON CONOCIDAD COMO FUNCINES ANONIMAS
+        la idea es que esa funcion ejecute su proceimiento a partir del metodo que la recibe como parametro.
         */
-        BTNexecute.setOnClickListener(view -> {
-            recibeData();
-            investWord();
+        //this: ambito o contexto de la misma clase.  busca la respuesta en la clase
+        btnProcesar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Este metodo onclick solo existe en el ambito del boton btnProcesar, lo que se haga a ca solo sirve para ese boton
+                recibirInformacion();
+                invertirPalabra();
+            }
+        });
+        btnMensaje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
         });
     }
-    private void recibeData() {
-        word = TXword.getText().toString();
-    }
-    private void investWord() {
-        // Usando StringBuilder con Java sin usar codigo de Android
-       // word = new StringBuilder(word).reverse().toString();//
 
-        String invertido="adios";
-
-        ///la idea es que traten la cadena string como si fuera un array donde cada letra
-        // esta en una posicion del arrray partiendo de  0
-        //decvolver un caracter de una posicion como si fuera un array
-        //metodo charART indice
-        for(int i = this.word.length() -1;  i >= 0 ; i--) {
-            invertido +=  this.word.charAt(i);
+    private void invertirPalabra() {
+        //Una anera directa de inveritr una cadena
+        //Netamente codigo java
+        //palabra = new StringBuilder(palabra).reverse().toString();
+        String invertido = "";
+        //la idea es que traten la cadena como si fuera un array
+        //donde cada letra esta en una posicion del array partiendo desde 0
+        //para tal afecto los String tienen un metodo que les permite
+        //devolver un caracter de una posicion como si fuera array
+        //el metodo se llama .charAt(indice)
+        for (int i = this.palabra.length() - 1; i >= 0; i--) {
+            invertido += this.palabra.charAt(i);
         }
+        if (invertido.equals(palabra)) {
+            txtResultado.setText("Es un palindromo");
+        } else {
+            txtResultado.setText(invertido);
+        }
+    }
 
-        TBresult.setText(invertido);
+    private void recibirInformacion() {
+        palabra = etPalabra.getText().toString();
+    }
+
+    private void inicializarVistas() {
+        txtResultado = findViewById(R.id.txtResultado);
+        etPalabra = findViewById(R.id.etPalabra);
+        etPalabra = findViewById(R.id.etPalabra);
+        btnProcesar = findViewById(R.id.btnProcesar);
     }
 }
-//COMIT, PUSH cambia mis archivos,UPDATE actualizar y bajar todo de la nube
+//ivos,UPDATE actualizar y bajar todo de la nube
