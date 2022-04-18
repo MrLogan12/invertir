@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 public class MainActivity extends AppCompatActivity {
 
     //atributos-variables
@@ -14,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btnProcesar;
     private Button btnMensaje;
     private String palabra;
+    String invertido;
+
+    //metodos - funciones
     //metodos - funciones
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +42,39 @@ public class MainActivity extends AppCompatActivity {
                 invertirPalabra();
             }
         });
-        btnMensaje.setOnClickListener(new View.OnClickListener() {
+        btnMensaje.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                mostrarMensaje();
             }
         });
+    }
+
+    private void mostrarMensaje() {
+        /*
+        para mostarr mensajes en pantalla, ustedes pueden usar una ventana emergente temporal Toast que
+        basicamnete sirve para mostrar informacion al usuario acerca de ciertas
+        procesos que hayan pasado, comfirmaciones, mostar algunmensaje y oitro.
+         */
+        /*
+        el toast tiene un metodo llamdo maketoast que es donde configuran lo que quieren mostrar al usuario,
+        para que deban pasr estos
+        - contexto (ambito) de la pantalla donde se va a dibujar ese mensaje
+        - cadena de caracteres: el mensaje a mostrar
+        -una contante de duracion del mensaje en pantalla para que dure
+        finalmente debven decirle al toast que s muentre con esa configuracion y para ello usan el metodo o envento .show.
+         */
+        String mensajeMostrar = evaluarPaindromo();
+        Toast.makeText(this, mensajeMostrar, Toast.LENGTH_LONG).show();
+    }
+
+    //Evaluar Palindromo
+    private String evaluarPaindromo(){
+        String mensaje = "No es palindromo";
+        if (palabra.equals(this.invertido)) {
+            mensaje = "Es palindromo";
+        }
+        return mensaje;
     }
 
     private void invertirPalabra() {
@@ -76,4 +108,3 @@ public class MainActivity extends AppCompatActivity {
         btnProcesar = findViewById(R.id.btnProcesar);
     }
 }
-//ivos,UPDATE actualizar y bajar todo de la nube
